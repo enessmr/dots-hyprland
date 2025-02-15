@@ -162,8 +162,8 @@ apply_gtk() { # Using gradience-cli
 }
 
 apply_ags() {
-    ags run-js "handleStyles(false);"
-    ags run-js 'openColorScheme.value = true; Utils.timeout(2000, () => openColorScheme.value = false);'
+  agsv1 run-js "handleStyles(false);"
+  agsv1 run-js 'openColorScheme.value = true; Utils.timeout(2000, () => openColorScheme.value = false);'
 }
 
 
