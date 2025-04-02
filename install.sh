@@ -138,6 +138,31 @@ case $SKIP_PLASMAINTG in
     ;;
 esac
 
+if ps aux | grep Hyprland; then;
+	if hyprpm; then;
+		if hyprpm list | grep dynamic-cursors$ ;then SKIP_DYNAMICCURSORS=true;fi
+		case $SKIP_DYNAMICCURSORS in
+  		true) sleep 0;;
+  		*)
+    		if $ask;then
+      			echo -e "\e[33m[$0]: NOTE: The plugin \"hypr-dynamic-cursours\" is bumped to Hyprland v0.48.1.\e[0m"
+      			echo -e "\e[33mIt is not related with this dotfiles. But it adds some realism\e[0m"
+      			echo -e "\e[33mInstall it? [y/N]\e[0m"
+      			read -p "====> " p
+    		else
+      			p=y
+    		fi
+    		case $p in
+      			y) x hyprpm update && x hyprpm add https://github.com/VirtCode/hypr-dynamic-cursors.git && x hyprpm enable dynamic-cursors ;;
+     	 		*) echo "Ok, won't install"
+    		esac
+    			;;
+		esac
+	fi
+fi
+
+
+
 v sudo usermod -aG video,i2c,input "$(whoami)"
 v bash -c "echo i2c-dev | sudo tee /etc/modules-load.d/i2c-dev.conf"
 v systemctl --user enable ydotool --now
