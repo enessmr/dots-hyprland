@@ -138,8 +138,8 @@ case $SKIP_PLASMAINTG in
     ;;
 esac
 
-if ps aux | grep Hyprland; then
-	if hyprpm; then
+if ps aux | grep Hyprland$; then
+	if hyprpm list; then
 		if hyprpm list | grep dynamic-cursors$ ;then SKIP_DYNAMICCURSORS=true;fi
 		case $SKIP_DYNAMICCURSORS in
   		true) sleep 0;;
