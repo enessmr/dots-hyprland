@@ -138,9 +138,9 @@ case $SKIP_PLASMAINTG in
     ;;
 esac
 
-if ps aux | grep Hyprland$; then
-	if hyprpm list; then
-		if hyprpm list | grep dynamic-cursors$ ;then SKIP_DYNAMICCURSORS=true;fi
+if ps aux | grep Hyprland$ > /dev/null; then
+	if hyprpm list > /dev/null; then
+		if hyprpm list | grep dynamic-cursors$ > /dev/null ;then SKIP_DYNAMICCURSORS=true;fi
 		case $SKIP_DYNAMICCURSORS in
   		true) sleep 0;;
   		*)
@@ -160,7 +160,6 @@ if ps aux | grep Hyprland$; then
 		esac
 	fi
 fi
-
 
 
 v sudo usermod -aG video,i2c,input "$(whoami)"
